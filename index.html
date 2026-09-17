@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>罗曼空间望远镜 · 宇宙侦察兵 | ROMAN MISSION ARCHIVE</title>
+<meta name="description" content="罗曼空间望远镜科普：三兄弟对比、科学家、科学原理、三大任务、拉格朗日点、火箭课堂、NASA 星际使者">
+<style>
+:root{
+  --bg:#05060a; --bg-deep:#020305; --panel:#0b0d14; --panel2:#0e1119;
+  --line:rgba(139,143,163,.14); --line2:rgba(139,143,163,.28);
+  --txt:#e8eaf0; --dim:#B08968; --faint:#7f6245;
+  --accent:#FFB703; --status:#3ce08a; --flame:#E5383B; --gold:#FFD166; --blue:#4da8da;
+  --mono:'SF Mono','Fira Code','Cascadia Code','Consolas',monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --nav-h:52px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{
+  background:var(--bg); color:var(--txt);
+  font-family:var(--sans); line-height:1.75;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+#stars i{position:absolute;border-radius:50%;background:#fff;opacity:.5;animation:tw 3.2s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.2}50%{opacity:.85}}
+nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:50;
+  background:rgba(5,6,10,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;padding:0 20px;
+}
+nav .logo{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:2px;color:var(--txt)}
+nav .logo b{color:var(--flame)}
+nav a{color:var(--dim);text-decoration:none;font-size:12px;margin-left:20px;letter-spacing:1px;transition:color .2s;font-family:var(--mono);text-transform:uppercase}
+nav a:hover{color:var(--accent)}
+/* 目录条 v4.0 */
+.toc{max-width:1100px;margin:0 auto;padding:0 24px}
+.toc .cap{font-family:var(--mono);font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--faint);margin-bottom:9px}
+.toc-wrap{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.toc-wrap::-webkit-scrollbar{display:none}
+.toc a{flex:0 0 auto;scroll-snap-align:start;display:inline-flex;align-items:baseline;gap:6px;padding:8px 14px 8px 12px;border:1px solid var(--line2);border-radius:20px;background:rgba(5,6,10,.6);font-family:var(--mono);font-size:11.5px;color:var(--dim);text-decoration:none;letter-spacing:.5px;transition:border-color .2s,color .2s,background .2s;min-height:34px}
+.toc a em{font-style:normal;color:var(--faint);font-size:10px}
+.toc a:hover{border-color:var(--accent);color:var(--txt)}
+.toc a.on{border-color:var(--accent);color:var(--accent);background:rgba(255,183,3,.08)}
+.toc a.on em{color:var(--accent)}
+@media(min-width:900px){.toc-wrap{justify-content:center;flex-wrap:wrap;overflow:visible}}
+/* 架构图 v4.1 */
+.arch-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:18px}
+.arch{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:20px 18px 18px}
+.arch .a-cap{font-family:var(--mono);font-size:11px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.arch .a-cap i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(255,183,3,.8)}
+.arch .a-sub{font-size:12px;color:var(--dim);margin:6px 0 16px}
+.arch-node{border:1px solid var(--line2);border-radius:8px;background:var(--panel2);padding:10px 12px;display:flex;gap:10px;align-items:flex-start;transition:border-color .2s,background .2s}
+.arch-node:hover{border-color:var(--accent);background:rgba(255,183,3,.05)}
+.arch-node .n{font-family:var(--mono);font-size:11px;color:var(--accent);flex:0 0 auto;padding-top:1px}
+.arch-node .bd{min-width:0}
+.arch-node .t{font-size:13px;color:var(--txt);font-weight:600;line-height:1.35}
+.arch-node .s{font-size:11px;color:var(--dim);display:block;margin-top:3px;line-height:1.5}
+.arch-node .tm{margin-left:auto;flex:0 0 auto;font-family:var(--mono);font-size:10px;color:var(--faint);white-space:nowrap;padding-top:2px}
+.arch-arrow{height:20px;display:flex;justify-content:center;align-items:center;color:var(--accent);opacity:.5;font-size:10px;font-family:var(--mono)}
+.arch-loop{margin-top:14px;border-top:1px dashed var(--line2);padding-top:10px;font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:1px;display:flex;align-items:center;gap:8px}
+.arch-tag{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:6px 12px;border-radius:16px;font-size:11px;color:var(--accent);border:1px solid rgba(255,183,3,.35);background:rgba(255,183,3,.06);font-family:var(--mono);letter-spacing:1px}
+@media(min-width:900px){.arch-grid{grid-template-columns:1fr 1fr}}
+/* 移动端目录按钮+面板 v4.0 */
+.nav-toggle{display:none;align-items:center;gap:8px;background:none;border:1px solid var(--line2);border-radius:6px;color:var(--dim);font-family:var(--mono);font-size:12px;letter-spacing:2px;padding:7px 12px;cursor:pointer;text-transform:uppercase;transition:border-color .2s,color .2s}
+.nav-toggle .burger{display:flex;flex-direction:column;gap:3px}
+.nav-toggle .burger i{width:14px;height:1.5px;background:var(--accent)}
+.nav-toggle.on{border-color:var(--accent);color:var(--accent)}
+.toc-panel{position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:rgba(5,6,10,.97);backdrop-filter:blur(12px);z-index:49;display:none;overflow-y:auto;padding:22px 22px 48px}
+.toc-panel.open{display:block}
+.toc-panel .p-cap{font-family:var(--mono);font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+.toc-panel .p-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.toc-panel a{display:flex;gap:10px;align-items:baseline;padding:13px 14px;border:1px solid var(--line);border-radius:8px;color:var(--dim);text-decoration:none;font-size:13.5px;line-height:1.4;transition:border-color .2s,color .2s,background .2s}
+.toc-panel a em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:1px}
+.toc-panel a:hover{border-color:var(--accent);color:var(--txt)}
+.toc-panel a.on{border-color:var(--accent);color:var(--txt);background:rgba(255,183,3,.07)}
+@media(min-width:640px){.toc-panel .p-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.toc-panel .p-grid{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:899px){.nav-links{display:none}.nav-toggle{display:inline-flex}}
+@media(min-width:900px){.toc-panel{display:none!important}}
+#app{position:relative;z-index:1;padding-top:var(--nav-h)}
+section{max-width:1100px;margin:0 auto;padding:104px 24px}
+h1,h2,h3{line-height:1.3}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.kicker em{font-style:normal;color:var(--accent)}
+h2{font-size:clamp(26px,4.4vw,40px);font-weight:800;letter-spacing:.5px}
+h2 .n{display:inline-block;font-family:var(--mono);font-size:13px;color:var(--faint);margin-right:14px;font-weight:600;vertical-align:middle;letter-spacing:2px}
+.lead{color:var(--dim);font-size:clamp(15px,2.2vw,17.5px);max-width:760px;margin-top:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:24px}
+.card h3{font-size:19px;font-weight:700}
+.grid2{display:grid;grid-template-columns:1fr;gap:16px}
+.numrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.num{flex:1 1 150px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 18px;min-width:150px}
+.num b{display:block;font-family:var(--mono);font-size:clamp(26px,4vw,38px);color:var(--accent);font-weight:700;line-height:1.2;letter-spacing:1px}
+.num span{font-size:12px;color:var(--dim);letter-spacing:.5px}
+img{max-width:100%;display:block}
+.imgcard{position:relative;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--bg-deep)}
+.imgcard img{width:100%;height:auto;object-fit:contain;transition:transform .6s ease}
+.imgcard:hover img{transform:scale(1.015)}
+.imgcard figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 10px;font-size:11px;letter-spacing:1px;color:#c8ccd8;background:linear-gradient(transparent,rgba(2,3,5,.88));font-family:var(--mono)}
+.cause{display:inline-block;margin-top:22px;padding:10px 16px;background:rgba(229,56,59,.07);border:1px solid rgba(229,56,59,.3);border-radius:6px;color:#ffb4a2;font-size:14px}
+.cause b{color:var(--txt)}
+/* hero */
+#hero{padding-top:64px}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center;margin-top:18px}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;margin-top:18px;padding:7px 16px;border-radius:20px;font-size:12.5px;color:var(--status);border:1px solid rgba(255,183,3,.45);background:rgba(255,183,3,.07);font-family:var(--mono);letter-spacing:1.5px;text-transform:uppercase}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--status);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+h1{font-size:clamp(40px,8vw,72px);font-weight:900;letter-spacing:1px;line-height:1.1;margin-top:6px}
+h1 .cn{display:block;color:var(--txt)}
+h1 .en{display:block;font-family:var(--mono);font-size:clamp(13px,2vw,16px);font-weight:600;letter-spacing:4px;color:var(--flame);text-transform:uppercase;margin-bottom:14px}
+.cruise{margin-top:26px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px 20px}
+.cruise .cap{font-family:var(--mono);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.cruise .track{position:relative;margin:14px 44px 0}
+.cruise .bar{position:relative;height:6px;border-radius:3px;background:var(--bg-deep);border:1px solid var(--line);overflow:hidden}
+.cruise .fill{position:absolute;left:0;top:0;bottom:0;width:50%;background:var(--status);transition:width 1.6s ease}
+.cruise .marks{position:relative;height:34px;margin-top:6px}
+.cruise .marks i{position:absolute;top:0;transform:translateX(-50%);font-style:normal;font-size:10px;color:var(--faint);white-space:nowrap;font-family:var(--mono);letter-spacing:1px}
+    .marks i:first-child{transform:none}
+    .marks i:last-child{transform:translateX(-100%)}
+.cruise .marks i::before{content:"";display:block;width:1px;height:8px;background:var(--line2);margin:0 auto 4px}
+.cruise .marks i.cur{color:var(--status)}
+/* 三兄弟 */
+.tabs{display:flex;gap:8px;margin:24px 0 16px;flex-wrap:wrap}
+.tab{flex:1;min-width:100px;padding:12px 8px;background:var(--panel);border:1px solid var(--line);border-radius:6px;color:var(--dim);font-size:13px;cursor:pointer;text-align:center;transition:all .2s;font-family:var(--mono);letter-spacing:1px}
+.tab:hover{border-color:var(--line2)}
+.tab.on{color:var(--bg-deep);background:var(--bc,var(--accent));border-color:var(--bc,var(--accent));font-weight:700}
+.bro-panel{display:none}
+.bro-panel.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.bro-card{border-top:2px solid var(--bc,var(--accent));padding:0 0 20px;border-radius:6px;overflow:hidden}
+.bro-card .imgcard{border-radius:0;border-left:0;border-right:0;border-top:0}
+.bro-card .imgcard img{max-height:none}
+.bro-card .body{padding:20px 24px 0}
+.bro-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.bro-head h3{font-size:22px}
+.bro-head .tag{font-family:var(--mono);font-size:11px;color:var(--bc,var(--accent));border:1px solid var(--bc,var(--accent));border-radius:20px;padding:3px 12px;letter-spacing:1.5px;text-transform:uppercase}
+.bro-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}
+.bro-stats div{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:6px;padding:9px 12px;font-size:12.5px;color:var(--dim)}
+.bro-stats b{display:block;color:var(--bc,var(--accent));font-size:16px;font-family:var(--mono);letter-spacing:.5px}
+/* 科学家 */
+.sci-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px}
+.sci-grid .sci-card{min-width:0}
+.sci-card>div{min-width:0}
+.sci-card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s}
+.sci-card:hover{border-color:var(--line2)}
+.sci-avatar{flex:0 0 92px;width:92px;height:118px;border-radius:6px;overflow:hidden;background:var(--bg-deep);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.sci-avatar img{width:100%;height:100%;object-fit:contain}
+.sci-avatar .lt{font-family:var(--mono);font-size:36px;font-weight:700;color:var(--flame)}
+.sci-avatars{display:flex;gap:6px;flex:1 1 auto;min-width:0}
+.sci-avatars .sci-avatar{flex:1 1 0;min-width:0;height:118px}
+.sci-card h3{font-size:17px}
+.sci-card .y{font-size:11.5px;color:var(--faint);font-family:var(--mono);letter-spacing:1px;text-transform:uppercase}
+.sci-card p{font-size:13.5px;color:var(--dim);margin-top:7px}
+.sci-card .award{display:inline-block;margin-top:10px;font-size:11px;color:var(--accent);border:1px solid rgba(255,183,3,.4);border-radius:20px;padding:2px 12px;font-family:var(--mono);letter-spacing:1px}
+/* 对比 */
+#cmp{position:relative;height:auto;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--bg-deep);touch-action:none;margin-top:20px}
+#cmp .sky{position:absolute;inset:0}
+#cmp .sky i{position:absolute;border-radius:50%;background:#fff}
+#cmp .sq{position:absolute;border:2px solid var(--gold);background:rgba(232,181,74,.08);display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;color:var(--gold);font-family:var(--mono)}
+#cmp .sq.big{border-color:var(--flame);color:var(--flame);background:rgba(229,56,59,.06)}
+#cmp .sq b{display:block;font-size:15px}
+.cmpctl{margin-top:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.cmpctl input{flex:1;min-width:160px;accent-color:var(--accent)}
+.cmpctl .lbl{font-size:13px;color:var(--dim);min-width:130px;font-family:var(--mono);letter-spacing:.5px}
+/* 拉格朗日 */
+#lg svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:6px;background:var(--bg-deep)}
+#lg .pt{cursor:pointer}
+#lg .pt circle.hit{fill:transparent}
+#lg .pt text{font-size:13px;fill:var(--dim);pointer-events:none;font-family:var(--mono)}
+#lg .pt .dot{transition:r .15s}
+#lg .pt.on .dot{r:9px;fill:var(--status)}
+#lg .pt.on text{fill:var(--txt);font-weight:700}
+.lg-info{margin-top:14px;min-height:108px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px 20px}
+.lg-info h4{color:var(--accent);font-size:16px;margin-bottom:6px;font-family:var(--mono);letter-spacing:1px}
+.lg-info p{font-size:14px;color:var(--dim)}
+/* 时间线 */
+.tl{position:relative;margin-top:30px;padding-left:24px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:var(--line2)}
+.tl-item{position:relative;padding:0 0 28px 20px}
+.tl-item::before{content:"";position:absolute;left:-24px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.tl-item b{font-size:16px;color:var(--txt);display:block}
+.tl-item .y{font-family:var(--mono);color:var(--accent);font-weight:700;font-size:13px;letter-spacing:2px}
+.tl-item p{font-size:14px;color:var(--dim);margin-top:4px}
+/* 经典照片 */
+.classic-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px}
+.classic-card{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden;transition:border-color .2s}
+.classic-card:hover{border-color:var(--line2)}
+.classic-card img{width:100%;height:auto;display:block;object-fit:contain;background:var(--bg-deep)}
+.classic-card figcaption{padding:10px 14px 12px;font-size:12px;color:var(--dim)}
+.classic-card figcaption b{display:block;color:var(--txt);font-size:13.5px;margin-bottom:2px;font-family:var(--mono);letter-spacing:.5px}
+.classic-card figcaption span{font-size:11px;color:var(--faint);font-family:var(--mono);letter-spacing:1px;text-transform:uppercase}
+/* 发射步骤 */
+.ls-phase{margin-top:22px;font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--flame);text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.ls-phase::after{content:"";flex:1;height:1px;background:var(--line)}
+.ls-row{display:flex;gap:14px;align-items:flex-start;margin-top:10px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:11px 16px}
+.ls-time{font-family:var(--mono);font-size:12.5px;color:var(--accent);font-weight:700;letter-spacing:1px;flex:0 0 92px;padding-top:2px}
+.ls-body{flex:1;min-width:0}
+.ls-body b{font-size:14.5px;color:var(--txt);display:block}
+.ls-body p{font-size:13px;color:var(--dim);margin-top:2px}
+.ls-body p em{font-style:normal;color:var(--accent);font-family:var(--mono);font-size:11.5px}
+@media(min-width:640px){.classic-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.classic-grid{grid-template-columns:repeat(3,1fr)}}
+/* 星际使者 */
+/* 火箭课堂 */
+.act{display:flex;align-items:center;gap:12px;margin:36px 0 16px;font-family:var(--mono);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold)}
+.act::after{content:"";flex:1;height:1px;background:var(--line2)}
+.act em{font-style:normal;color:var(--flame)}
+.rc-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.rc-card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px 18px 16px;transition:border-color .2s}
+.rc-card:hover{border-color:var(--line2)}
+.rc-card .num{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--faint)}
+.rc-card .big{display:block;font-family:var(--mono);font-size:25px;color:var(--gold);margin:4px 0 6px}
+.rc-card .big em{font-style:normal;font-size:12px;color:var(--faint);letter-spacing:1px}
+.rc-card h3{font-size:15.5px;margin:0 0 8px}
+.rc-card p{font-size:13.5px;color:var(--dim);line-height:1.9}
+.fh-card{margin-top:14px;background:linear-gradient(135deg,rgba(229,56,59,.09),transparent 55%),var(--panel);border:1px solid var(--line);border-radius:6px;padding:20px}
+.fh-card h3{font-size:17px}
+.fh-card h3 span{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:1px;margin-left:8px;text-transform:uppercase}
+.fh-card .fh-stats{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 10px}
+.fh-card .fh-stats i{font-style:normal;font-family:var(--mono);font-size:11.5px;color:var(--txt);background:rgba(229,56,59,.12);border:1px solid rgba(229,56,59,.3);border-radius:6px;padding:4px 12px}
+.fh-card .fh-stats i b{color:var(--flame);font-size:14px}
+.fh-card p{font-size:13.5px;color:var(--dim);line-height:1.9}
+.rc-rec{display:grid;grid-template-columns:1fr;margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.rc-rec img{width:100%;height:100%;object-fit:cover;max-height:480px;background:var(--bg-deep)}
+.rc-rec .rc-body{padding:20px}
+.rc-rec h3{font-size:16.5px}
+.rc-rec h3 span{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:1px;margin-left:8px;text-transform:uppercase}
+.rc-rec .tag{display:inline-block;font-family:var(--mono);font-size:11px;color:var(--status);border:1px solid rgba(255,183,3,.35);border-radius:20px;padding:2px 10px;margin:10px 0;letter-spacing:.5px}
+.rc-rec p{font-size:13.5px;color:var(--dim);line-height:1.9}
+.rc-rec .note{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line2);font-size:13px;color:var(--faint);line-height:1.8}
+.rc-map{margin-top:14px;border:1px solid var(--line);border-radius:6px;overflow-x:auto;background:var(--bg-deep)}
+.rc-map .cap{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--faint);padding:14px 16px 2px}
+.rc-map table{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+.rc-map th{font-family:var(--mono);font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--faint);text-align:left;padding:10px 16px 6px;border-bottom:1px solid var(--line2);font-weight:400}
+.rc-map td{padding:11px 16px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--dim)}
+.rc-map td:first-child{font-family:var(--mono);color:var(--gold);white-space:nowrap}
+.rc-map td b{color:var(--txt);font-weight:600}
+.rc-map tr:last-child td{border-bottom:none}
+@media(min-width:640px){.rc-grid{grid-template-columns:repeat(3,1fr)}.rc-rec{grid-template-columns:380px 1fr}}
+/* 星际使者 */
+.ruler{position:relative;margin-top:26px;border:1px solid var(--line);border-radius:6px;background:var(--bg-deep);padding:20px 18px 12px;overflow:hidden}
+.ruler .cap{font-family:var(--mono);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--faint)}
+.ruler .cap em{font-style:normal;color:var(--accent)}
+.ruler .track{position:relative;height:66px;margin-top:6px}
+.ruler .line{position:absolute;left:0;right:0;top:30px;height:2px;background:linear-gradient(90deg,var(--blue),var(--gold),var(--status));border-radius:1px}
+.ruler .line::after{content:"";position:absolute;right:-3px;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--status);box-shadow:0 0 12px rgba(255,183,3,.8)}
+.ruler .dot{position:absolute;top:30px;transform:translate(-50%,-50%);width:15px;height:15px;border-radius:50%;background:var(--bg);border:3px solid var(--status);cursor:pointer;transition:transform .2s,box-shadow .2s;z-index:2}
+.ruler .dot:hover{transform:translate(-50%,-50%) scale(1.4);box-shadow:0 0 14px rgba(255,183,3,.7)}
+.ruler .dot.end{border-color:var(--faint);background:var(--faint)}
+.ruler .dot.apollo{border-color:var(--flame);background:var(--flame)}
+.ruler .lbl{position:absolute;top:44px;transform:translateX(-50%);font-family:var(--mono);font-size:10px;letter-spacing:.5px;color:var(--dim);white-space:nowrap;text-align:center;pointer-events:none}
+.ruler .lbl b{display:block;color:var(--txt);font-size:10.5px;letter-spacing:1px}
+.ruler .lbl.fl{transform:translateX(-100%)}
+.ruler .lbl.flr{transform:translateX(0)}
+.ruler .lbl.up{top:2px}
+.ruler .lbl.apollo b{color:var(--flame)}
+.ruler .lbl.end b{color:var(--faint)}
+.ruler .ticks{display:flex;justify-content:space-between;margin-top:4px;font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:1px;pointer-events:none}
+.ruler .ticks i{font-style:normal;position:relative;padding-top:8px}
+.ruler .ticks i::before{content:"";position:absolute;left:50%;top:0;width:1px;height:6px;background:var(--line2)}
+.env-info{margin-top:14px;min-height:110px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px 20px}
+.env-info h4{color:var(--accent);font-size:16px;margin-bottom:6px;font-family:var(--mono);letter-spacing:1px}
+.env-info h4 b{color:var(--txt);font-family:var(--sans);font-size:17px;letter-spacing:0}
+.env-info p{font-size:14px;color:var(--dim)}
+.env-info .hint{font-size:13px;color:var(--faint);font-family:var(--mono);letter-spacing:1px}
+.env-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:22px}
+.env-card{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden;transition:border-color .2s}
+.env-card:hover{border-color:var(--line2)}
+.env-card img{width:100%;height:auto;display:block;object-fit:contain;background:var(--bg-deep)}
+.env-card .body{padding:14px 16px 16px}
+.env-card h3{font-size:16.5px}
+.env-card h3 span{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:1px;margin-left:8px;text-transform:uppercase}
+.env-card .stat{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 8px}
+.env-card .stat i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--status);border:1px solid rgba(255,183,3,.35);border-radius:20px;padding:2px 10px;letter-spacing:.5px}
+.env-card .stat i.hot{color:var(--flame);border-color:rgba(229,56,59,.4)}
+.env-card p{font-size:13.5px;color:var(--dim)}
+.env-card .flag{display:block;margin-top:9px;font-size:10.5px;color:var(--faint);font-family:var(--mono);letter-spacing:1px;text-transform:uppercase}
+.pale{display:flex;flex-direction:column;align-items:center;text-align:center;padding:36px 24px 30px;background:radial-gradient(ellipse at center,#0d1019 0%,#05060a 72%);border:1px solid var(--line);border-radius:6px;margin-top:26px}
+.pale img{width:min(330px,78%);border-radius:50%;opacity:.95}
+.pale b{display:block;margin-top:24px;font-size:17px;color:var(--txt)}
+.pale span{display:block;margin-top:8px;font-size:14.5px;color:#c8ccd8;line-height:1.95;max-width:600px}
+.pale em{font-style:normal;display:block;margin-top:12px;color:var(--gold);font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+@media(min-width:640px){.env-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.env-grid{grid-template-columns:repeat(4,1fr)}}
+/* 发射 */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{padding:7px 14px;border-radius:20px;font-size:12px;border:1px solid var(--line);color:var(--dim);background:var(--panel);font-family:var(--mono);letter-spacing:1px}
+.chip.ok{color:var(--status);border-color:rgba(255,183,3,.5);background:rgba(255,183,3,.07)}
+.chip.run{color:var(--flame);border-color:rgba(229,56,59,.5);background:rgba(229,56,59,.07)}
+.chip b{font-size:14px}
+.launch-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:20px}
+.launch-grid .imgcard img{max-height:480px;object-fit:contain}
+footer{border-top:1px solid var(--line);padding:44px 24px;text-align:center;color:var(--faint);font-size:12px;letter-spacing:.5px}
+footer .motto{margin-top:12px;font-family:var(--mono);font-size:13px;letter-spacing:5px;color:var(--dim);text-transform:uppercase}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:520px){
+  nav .logo{font-size:11px}
+  nav .sub{display:none}
+  nav a{font-size:11px;margin-left:12px}
+}
+@media(min-width:640px){
+  .grid2{grid-template-columns:1fr 1fr}
+  .bro-stats{grid-template-columns:1fr 1fr 1fr 1fr}
+  .sci-grid{grid-template-columns:1fr 1fr}
+  .launch-grid{grid-template-columns:1.15fr .85fr;align-items:start}
+  .tl{padding-left:0}
+  .tl::before{left:auto;right:50%;transform:translateX(1px)}
+  .tl-item{width:50%;padding:0 28px 30px 0;text-align:right}
+  .tl-item:nth-child(odd){margin-left:50%;padding:0 0 30px 28px;text-align:left}
+  .tl-item::before{left:auto;right:-8px}
+  .tl-item:nth-child(odd)::before{left:-8px;right:auto}
+}
+@media(min-width:900px){
+  .hero-grid{grid-template-columns:1.1fr .9fr;min-height:74vh;align-items:center}
+  .hero-grid .imgcard{margin-right:-24px;border-radius:6px 0 0 6px}
+  .sci-grid{grid-template-columns:1fr 1fr}
+}
+
+/* v4.2 排版修复：numrow 防断行防孤行 */
+.num{display:flex;flex-direction:column;gap:6px}
+.num b{font-size:clamp(22px,3.2vw,34px);white-space:nowrap}
+.num b i{font-style:normal;font-size:.6em;letter-spacing:1.5px;opacity:.78}
+.num span{line-height:1.5}
+@media(max-width:420px){.num{min-width:calc(50% - 12px);flex:1 1 calc(50% - 12px);padding:13px 14px}}
+/* v4.2 进度条：已完成/当前/未来三态层次 */
+.cruise .marks i.done{color:var(--status);opacity:.55}
+.cruise .marks i.cur{color:var(--status)}
+.cruise .marks i.cur::before{background:var(--status)}
+
+/* v4.2 进度条：已完成/当前/未来三态层次 */
+.cruise .marks i.done{color:var(--status);opacity:.55}
+.cruise .marks i.cur{color:var(--status)}
+.cruise .marks i.cur::before{background:var(--status)}
+/* v4.2b 进度条手机端横滑（5 标签在 390px 内数学上无法不重叠） */
+@media(max-width:520px){
+  .cruise .track{overflow-x:auto;margin:14px 0 0;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .cruise .track::-webkit-scrollbar{display:none}
+  .cruise .bar,.cruise .marks{min-width:520px}
+  .cruise .marks{margin-top:6px}
+}
+/* v4.2b 三人头像组：防挤压成细条 */
+.sci-avatars{flex:0 0 auto;width:auto}
+.sci-avatars .sci-avatar{flex:0 0 88px;width:88px}
+@media(max-width:640px){
+  .sci-card:has(.sci-avatars){flex-direction:column;align-items:stretch}
+  .sci-avatars{width:100%}
+  .sci-avatars .sci-avatar{flex:1 1 0;width:auto;height:130px}
+}
+
+/* v4.3 #why 时间线 */
+.why-tl{position:relative;margin-top:26px}
+.why-tl .tl-node{position:relative;padding:0 0 26px 36px;border-left:2px solid var(--line2)}
+.why-tl .tl-node:last-child{border-left-color:transparent;padding-bottom:2px}
+.why-tl .tl-node::before{content:"";position:absolute;left:-7px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg-deep);box-shadow:0 0 0 1px var(--accent)}
+.why-tl .tl-node em{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:2px}
+.why-tl .tl-node h3{font-size:18px;margin:5px 0 0}
+.why-tl .tl-node p{font-size:14.5px;color:var(--dim);margin-top:7px;line-height:1.75}
+/* v4.3 #compare 拖拽揭示 */
+.fov{position:relative;width:100%;border-radius:8px;overflow:hidden;border:1px solid var(--line2);margin-top:18px;aspect-ratio:16/9;background:#000;user-select:none}
+.fov img{width:100%;height:100%;object-fit:cover;display:block}
+.fov .veil{position:absolute;inset:0;background:rgba(3,5,12,.94);z-index:2;clip-path:inset(22.8% 44.5% 33.4% 44.5%)}
+.fov .hbox{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:10%;height:10%;border:2px solid #fff;z-index:3;box-sizing:border-box;pointer-events:none}
+.fov .hbox b{position:absolute;left:-2px;bottom:-24px;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:#fff;white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,.8)}
+.fov .hbox span{display:none}
+.fov .rtag{position:absolute;right:12px;top:10px;z-index:4;font-family:var(--mono);font-size:10.5px;letter-spacing:2px;color:var(--accent);text-shadow:0 1px 3px rgba(0,0,0,.8);opacity:.85}
+</style>
+</head>
+<body>
+<div id="stars"></div>
+<nav>
+  <div class="logo">ROMAN<span class="sub"> // </span><b>MISSION</b></div>
+  <div class="nav-links">
+    <a href="#brothers">三兄弟</a>
+    <a href="#science">科学原理</a>
+    <a href="#lagrange">拉格朗日点</a>
+    <a href="#rocket">火箭课堂</a>
+    <a href="#envoys">星际使者</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="目录">
+    <span class="burger"><i></i><i></i><i></i></span>
+    目录
+  </button>
+</nav>
+<div class="toc-panel" id="tocPanel">
+  <div class="p-cap">CONTENTS // 全部 12 个板块</div>
+  <div class="p-grid">
+    <a href="#brothers"><em>01</em>宇宙三兄弟</a>
+    <a href="#scientists"><em>02</em>站在望远镜背后的人</a>
+    <a href="#why"><em>03</em>为什么要有罗曼</a>
+    <a href="#science"><em>04</em>科学原理：它怎么工作</a>
+    <a href="#missions"><em>05</em>三大任务</a>
+    <a href="#compare"><em>06</em>100 倍是什么概念</a>
+    <a href="#lagrange"><em>07</em>拉格朗日点：太空停车位</a>
+    <a href="#timeline"><em>08</em>时间线：一部望远镜家族史</a>
+    <a href="#rocket"><em>09</em>火箭课堂：怎么上天，怎么回家</a>
+    <a href="#envoys"><em>10</em>星际使者：NASA 的探险舰队</a>
+    <a href="#classic"><em>11</em>经典照片：哥哥们拍过的宇宙</a>
+    <a href="#launch"><em>12</em>发射实况：今天刚发生</a>
+  </div>
+</div>
+<div id="app">
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge"><span class="dot"></span>STATUS // CRUISING TO L2</div>
+      <h1>
+        <span class="en">Nancy Grace Roman Space Telescope</span>
+        <span class="cn">罗曼空间望远镜</span>
+      </h1>
+      <p class="lead">它刚刚出发。2026 年 8 月 30 日，NASA 的罗曼空间望远镜搭乘猎鹰重型火箭升空，正在飞往 150 万公里外的太空停车位，去给整个宇宙拍全景地图。</p>
+      <div class="numrow">
+        <div class="num"><b>100<i>×</i></b><span>哈勃视野的 100 倍+</span></div>
+        <div class="num"><b>300MP</b><span>红外相机 3 亿像素</span></div>
+        <div class="num"><b>1.5M <i>KM</i></b><span>飞往日地 L2 点</span></div>
+        <div class="num"><b>1B<i>+</i></b><span>测量 10 亿个星系</span></div>
+      </div>
+    </div>
+    <figure class="imgcard">
+      <img src="img/hero_encaps.jpg" alt="罗曼空间望远镜封装进整流罩">
+      <figcaption>ENCAPSULATION // KSC 2026-08-24 · NASA</figcaption>
+    </figure>
+  </div>
+  <div class="cruise">
+    <div class="cap">MISSION STATUS // 发射成功 · 巡航中</div>
+    <div class="track">
+      <div class="bar"><div class="fill" id="cruiseFill"></div></div>
+      <div class="marks">
+        <i style="left:0%" class="done">LIFTOFF</i>
+        <i style="left:25%" class="done">ORBIT</i>
+        <i style="left:50%" class="done">DEPLOY</i>
+        <i style="left:75%" class="cur">L2</i>
+        <i style="left:100%">LIGHT</i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="toc">
+  <div class="cap">CONTENTS // 目录</div>
+  <div class="toc-wrap" id="tocWrap">
+    <a href="#brothers" data-sec="brothers"><em>01</em>三兄弟</a>
+    <a href="#scientists" data-sec="scientists"><em>02</em>科学家</a>
+    <a href="#why" data-sec="why"><em>03</em>起源</a>
+    <a href="#science" data-sec="science"><em>04</em>科学原理</a>
+    <a href="#missions" data-sec="missions"><em>05</em>三大任务</a>
+    <a href="#compare" data-sec="compare"><em>06</em>100 倍</a>
+    <a href="#lagrange" data-sec="lagrange"><em>07</em>拉格朗日点</a>
+    <a href="#timeline" data-sec="timeline"><em>08</em>时间线</a>
+    <a href="#rocket" data-sec="rocket"><em>09</em>火箭课堂</a>
+    <a href="#envoys" data-sec="envoys"><em>10</em>星际使者</a>
+    <a href="#classic" data-sec="classic"><em>11</em>经典照片</a>
+    <a href="#launch" data-sec="launch"><em>12</em>发射实况</a>
+  </div>
+</div>
+
+<!-- 三兄弟 -->
+<section id="brothers">
+  
+  <h2>宇宙三兄弟</h2>
+  <p class="lead">天上的望远镜像三兄弟，各有各的本事。罗曼是最小的弟弟，却有一双最广的眼睛。</p>
+  <div class="tabs" id="broTabs">
+    <div class="tab on" data-b="0" style="--bc:var(--gold)">哈勃 · 老大哥</div>
+    <div class="tab" data-b="1" style="--bc:var(--blue)">韦伯 · 巨无霸</div>
+    <div class="tab" data-b="2" style="--bc:var(--flame)">罗曼 · 侦察兵</div>
+  </div>
+
+  <div class="bro-panel on" data-b="0">
+    <div class="card bro-card" style="--bc:var(--gold)">
+      <figure class="imgcard"><img src="img/hubble.jpg" alt="哈勃空间望远镜在轨"><figcaption>HUBBLE // LOW EARTH ORBIT · NASA</figcaption></figure>
+      <div class="body">
+        <div class="bro-head"><h3>哈勃空间望远镜</h3><span class="tag">1990 年出生</span></div>
+        <div class="bro-stats">
+          <div><b>2.4M</b>主镜</div>
+          <div><b>540KM</b>近地轨道</div>
+          <div><b>VIS+UV+IR</b>多波段</div>
+          <div><b>1/100</b>罗曼的视野</div>
+        </div>
+        <p>人类第一台太空大望远镜，住在离地球 540 公里的近地轨道。它拍出了无数经典照片，证明了「把望远镜送上天」是对的。但它有个天生的短板：看得清，却看得窄，像用吸管看夜空。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bro-panel" data-b="1">
+    <div class="card bro-card" style="--bc:var(--blue)">
+      <figure class="imgcard"><img src="img/webb.jpg" alt="韦伯空间望远镜"><figcaption>JWST // GOLDEN MIRROR · NASA</figcaption></figure>
+      <div class="body">
+        <div class="bro-head"><h3>韦伯空间望远镜</h3><span class="tag">2021 年出生</span></div>
+        <div class="bro-stats">
+          <div><b>6.5M</b>拼接金镜</div>
+          <div><b>L2</b>住址</div>
+          <div><b>IR</b>专精</div>
+          <div><b>DEEPEST</b>看宇宙最早的星光</div>
+        </div>
+        <p>三兄弟里个头最大的，18 块六边形镜片拼成 6.5 米金镜，专看红外线。它能看到 130 亿年前宇宙婴儿期的光。缺点是视野更小：看得越深，看得越窄。它需要别人先告诉它「该看哪里」。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bro-panel" data-b="2">
+    <div class="card bro-card" style="--bc:var(--flame)">
+      <figure class="imgcard"><img src="img/roman_bros.jpg" alt="罗曼空间望远镜"><figcaption>ROMAN // PRE-FLIGHT · NASA</figcaption></figure>
+      <div class="body">
+        <div class="bro-head"><h3>罗曼空间望远镜</h3><span class="tag">2026 年出生</span></div>
+        <div class="bro-stats">
+          <div><b>2.4M</b>主镜（和哈勃同款）</div>
+          <div><b>L2</b>和韦伯合租</div>
+          <div><b>300MP</b>红外相机</div>
+          <div><b>100×</b>哈勃的视野</div>
+        </div>
+        <p>最小的弟弟，眼睛却最广：和哈勃一样的锐度，视野却是哈勃的至少 100 倍，每张照片能装下 1.5 个满月。它是宇宙的侦察兵，负责先扫大片天空，画出全景地图，再告诉哈勃和韦伯「这里值得细看」。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cause"><b>因果链：</b>哈勃看得清但看得窄，韦伯看得深但更窄。想搞懂暗能量和行星普查这种「大问题」，需要先有一张「大图」。所以罗曼来了：<b>它负责广，哈勃韦伯负责深，三兄弟分工合作。</b></div>
+</section>
+
+<!-- 科学家 -->
+<section id="scientists">
+  
+  <h2>站在望远镜背后的人</h2>
+  <p class="lead">每一台望远镜背后，都有一些「不信邪」的人。</p>
+  <div class="sci-grid">
+    <div class="sci-card">
+      <div class="sci-avatar"><img src="img/nancy.jpg" alt="南希·格蕾丝·罗曼"></div>
+      <div>
+        <h3>南希·格蕾丝·罗曼</h3>
+        <span class="y">1925-2018 · NASA 首位天文学主管</span>
+        <p>「哈勃之母」。1960 年代力排众议推动太空望远镜计划，坚持把望远镜送上天、数据向全世界公开。罗曼望远镜以她命名，是对她信念的致敬：在天上，才能看清宇宙。</p>
+        <span class="award">命名来源 · 本页主角</span>
+      </div>
+    </div>
+    <div class="sci-card">
+      <div class="sci-avatar"><img src="img/einstein.jpg" alt="阿尔伯特·爱因斯坦"></div>
+      <div>
+        <h3>阿尔伯特·爱因斯坦</h3>
+        <span class="y">1879-1955 · 物理学家</span>
+        <p>广义相对论的创立者，预言了引力透镜：大质量物体会弯曲时空，像透镜一样扭曲和放大背后的光。罗曼的暗物质地图和行星普查，全都建立在这个预言之上。</p>
+        <span class="award">预言引力透镜</span>
+      </div>
+    </div>
+    <div class="sci-card">
+      <div class="sci-avatar"><img src="img/hubble_portrait.jpg" alt="埃德温·哈勃"></div>
+      <div>
+        <h3>埃德温·哈勃</h3>
+        <span class="y">1889-1953 · 天文学家</span>
+        <p>发现星系在远离我们，而且越远的跑得越快，证明宇宙在膨胀。这是现代宇宙学的起点，也是「暗能量」问题的最初线索。哈勃望远镜以他命名。</p>
+        <span class="award">宇宙膨胀的发现者</span>
+      </div>
+    </div>
+    <div class="sci-card">
+      <div class="sci-avatar"><img src="img/webb_portrait.jpg" alt="詹姆斯·韦伯"></div>
+      <div>
+        <h3>詹姆斯·韦伯</h3>
+        <span class="y">1906-1992 · NASA 第二任局长</span>
+        <p>阿波罗登月时代的 NASA 掌门人，在任期间把美国的太空科学从起步推向黄金时代。韦伯望远镜以他命名。</p>
+        <span class="award">韦伯望远镜命名来源</span>
+      </div>
+    </div>
+    <div class="sci-card">
+      <div class="sci-avatars">
+        <div class="sci-avatar"><img src="img/perlmutter.jpg" alt="索尔·珀尔马特"></div>
+        <div class="sci-avatar"><img src="img/schmidt.jpg" alt="布莱恩·施密特"></div>
+        <div class="sci-avatar"><img src="img/riess.jpg" alt="亚当·里斯"></div>
+      </div>
+      <div>
+        <h3>珀尔马特 · 施密特 · 里斯</h3>
+        <span class="y">2011 年诺贝尔物理学奖</span>
+        <p>两个团队各自独立发现：宇宙膨胀在加速，而不是减速。这个「违背直觉」的发现催生了「暗能量」这个概念，也正是罗曼望远镜头号任务要解答的问题。</p>
+        <span class="award">暗能量发现者</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 为什么 + 研发 -->
+<section id="why">
+  
+  <h2>为什么要有罗曼</h2>
+  <p class="lead">这个故事里有间谍卫星、一位伟大的女性，和 130 万个普通人的名字。</p>
+  <div class="why-tl">
+    <div class="tl-node">
+      <em>1960s</em>
+      <h3>「哈勃之母」上场</h3>
+      <p>南希·格蕾丝·罗曼（1925-2018），NASA 第一位天文学主管，力排众议推动太空望远镜计划。没有她，就没有后来的哈勃，更不会有罗曼。她的信念：<b style="color:var(--txt)">在天上，才能看清宇宙。</b></p>
+    </div>
+    <div class="tl-node">
+      <em>2016</em>
+      <h3>间谍卫星送的望远镜</h3>
+      <p>美国国家侦察局（NRO）把两台用不上的 2.4 米间谍镜捐给 NASA。和哈勃同尺寸，但焦距更短，天生视野更宽。一台望远镜的命运，被两台「退休间谍镜」改变。</p>
+    </div>
+    <div class="tl-node">
+      <em>2020</em>
+      <h3>以她命名，正式立项</h3>
+      <p>计划从 WFIRST 更名「罗曼」，正式批准建造，开发预算 32 亿美元，总成本上限 39.34 亿美元。从构想到升空，走了将近 20 年。</p>
+    </div>
+    <div class="tl-node">
+      <em>2026.8</em>
+      <h3>130 万人的名字在船上</h3>
+      <p>NASA 邀请全世界报名，把名字刻进记忆卡随箭升空，最终超过 <b style="color:var(--accent)">130 万人</b>。此刻，名字正跟着望远镜飞向 L2。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 科学原理 -->
+<section id="science">
+  
+  <h2>科学原理：它怎么工作</h2>
+  <p class="lead">罗曼只有两台仪器，每一台都是一种「看」的新方法。</p>
+
+  <div class="card" style="margin-top:24px">
+    <h3 style="color:var(--flame)">仪器 1 · 宽视场红外相机 WFI</h3>
+    <p style="color:var(--dim);font-size:14.5px;margin-top:8px">一台 <b style="color:var(--txt)">300 兆像素</b>的红外相机，由 18 块探测器拼成。它和哈勃一样锐利（角分辨率 0.11 角秒），但每张照片覆盖 0.28 平方度，约 1.5 个满月大小，视野是哈勃的至少 100 倍。</p>
+    <p style="color:var(--dim);font-size:14.5px;margin-top:8px">为什么用红外？因为红外线能穿透尘埃。星系里到处是尘埃，可见光会被挡住，红外却能钻过去。而且宇宙在膨胀，远处的光被拉长成红外，只有红外相机才能看到「远古」的光。</p>
+    <div class="cause"><b>打个比方：</b>哈勃是 50 倍变焦，看得远但画面窄；罗曼是广角镜头，像素密度一样，却一下装下整片星空。</div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3 style="color:var(--flame)">仪器 2 · 日冕仪 CGI</h3>
+    <p style="color:var(--dim);font-size:14.5px;margin-top:8px">找行星最难的是什么？行星比恒星暗<b style="color:var(--txt)">十亿倍</b>。就像在探照灯旁边找一只萤火虫。日冕仪的办法：先用遮星盘把恒星的光挡住，再用两块可变形镜，把漏进来的残余星光「抵消」到十亿分之一。</p>
+    <p style="color:var(--dim);font-size:14.5px;margin-top:8px">成功之后，罗曼就能<b style="color:var(--txt)">直接给系外行星拍照片</b>，甚至分析它的大气里有没有水。这是人类在太空飞过的最先进的星光抑制技术。</p>
+    <div class="cause"><b>打个比方：</b>你用手挡住路灯，才能看清路灯后面的人。日冕仪就是一只特别稳的手。</div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3 style="color:var(--flame)">隐藏技能 · 微引力透镜</h3>
+    <div class="grid2" style="margin-top:14px;align-items:center">
+      <div>
+        <p style="color:var(--dim);font-size:14.5px">爱因斯坦预言：大质量物体会弯曲时空，像透镜一样把背后的光扭曲放大。当一颗恒星从另一颗更远的恒星前面经过，背景星会先变亮再变暗。如果中间那颗星有行星，亮度曲线会出现小小的抖动。</p>
+        <p style="color:var(--dim);font-size:14.5px;margin-top:8px">罗曼用这个方法<b style="color:var(--txt)">普查整个银河系的行星</b>，预计发现数千颗，甚至包括不绕恒星转、自由漂浮在太空里的「流浪行星」。宽视野在这里是决定性的：必须盯着上亿颗恒星，才能等到这些一闪而过的「透镜事件」。</p>
+      </div>
+      <figure class="imgcard">
+        <img src="img/lensing.jpg" alt="引力透镜示意图">
+        <figcaption>GRAVITATIONAL LENSING // NASA</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 三大任务 -->
+<section id="missions">
+  
+  <h2>三大任务</h2>
+  <p class="lead">罗曼要回答三个宇宙级问题。</p>
+  <div class="grid2" style="margin-top:24px">
+    <div class="card">
+      <h3>① 暗能量：宇宙在加速膨胀</h3>
+      <figure class="imgcard" style="margin:14px 0"><img src="img/darkenergy.jpg" alt="暗能量与引力的阴阳对比"><figcaption>DARK ENERGY // ARTIST CONCEPT · NASA</figcaption></figure>
+      <p style="color:var(--dim);font-size:14.5px">1998 年科学家发现：宇宙不仅膨胀，还在<b style="color:var(--txt)">加速</b>膨胀。是什么在推它？不知道，先叫它「暗能量」，它占了宇宙的约 68%。罗曼用三种方法同时测（超新星亮度、引力透镜统计、星系分布），画出宇宙膨胀的历史，给暗能量「称重」。</p>
+    </div>
+    <div class="card">
+      <h3>② 暗物质：看不见的 27%</h3>
+      <p style="color:var(--dim);font-size:14.5px;margin-top:8px">星系转得太快，光靠可见的物质根本「拽不住」。一定有一种看不见的物质在提供引力，它叫暗物质。暗物质会弯曲光线，罗曼用上亿个星系的引力透镜畸变，画出暗物质的分布地图。</p>
+    </div>
+    <div class="card">
+      <h3>③ 系外行星：银河系有多少行星</h3>
+      <figure class="imgcard" style="margin:14px 0"><img src="img/exoplanet.jpg" alt="系外行星概念图"><figcaption>EXOPLANET // ARTIST CONCEPT · NASA</figcaption></figure>
+      <p style="color:var(--dim);font-size:14.5px">微引力透镜普查 + 日冕仪直接成像，双管齐下。目标不是找到一两颗，而是做一次<b style="color:var(--txt)">人口普查</b>：银河系里有多少行星？行星系统长什么样？有没有像地球的？</p>
+    </div>
+    <div class="card">
+      <h3>＋ 红外巡天：给宇宙拍证件照</h3>
+      <p style="color:var(--dim);font-size:14.5px;margin-top:8px">主任务 5 年（可延长 5 年），罗曼会不断扫过天空，测量<b style="color:var(--txt)">超过 10 亿个星系</b>的光，建一份前所未有的宇宙档案。谁发现了新目标，就交给哈勃和韦伯放大细看。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 视野对比 -->
+<section id="compare">
+  
+  <h2>100 倍是什么概念</h2>
+  <p class="lead">同一片天空，哈勃要拍 100 张才能拼出罗曼的一张。拖下面的滑块试试。</p>
+  <div id="cmp" class="fov">
+    <img src="img/fov_deep.jpg" alt="NASA 模拟的罗曼超深场图像">
+    <div class="veil" id="veil"></div>
+    <div class="hbox" id="hbox"><b>HUBBLE</b><span>哈勃视场</span></div>
+    <div class="rtag">ROMAN 视场</div>
+  </div>
+  <div class="cmpctl">
+    <input type="range" id="cmpRange" min="1" max="100" value="1">
+    <div class="lbl" id="cmpLbl">哈勃 × <b>1</b></div>
+  </div>
+  <div class="cause" style="margin-top:14px"><b>观察：</b>中央小框 = 哈勃的视场。拖到最右，罗曼一张照片覆盖的面积是它的 100 倍。</div>
+</section>
+
+<!-- 拉格朗日点 -->
+<section id="lagrange">
+  
+  <h2>拉格朗日点：太空停车位</h2>
+  <p class="lead">两个大天体（太阳和地球）之间，藏着 5 个「停车位」。停在那里，引力刚刚好，几乎不用烧燃料。看下面这张 NSF NOIRLab 的专业示意图。</p>
+    <figure class="imgcard">
+    <img src="img/lagrange_pro.jpg" alt="地日系统五个拉格朗日点示意图">
+    <figcaption>EARTH-SUN LAGRANGE POINTS // NSF NOIRLab (CC BY 4.0)</figcaption>
+  </figure>
+  <p style="font-size:12px;color:var(--faint);margin-top:12px;font-family:var(--mono);letter-spacing:1px">SCALE // 示意图，距离未按真实比例。实际 L1/L2 距地球约 150 万公里（约 4 倍地月距离），L4/L5 与日地构成等边三角形。罗曼和韦伯都住在 L2。</p>
+  <div class="card" style="margin-top:16px">
+    <h3>为什么罗曼和韦伯都选 L2？</h3>
+    <p style="color:var(--dim);font-size:14.5px;margin-top:8px">三个理由，个个关键：</p>
+    <p style="color:var(--dim);font-size:14.5px;margin-top:6px"><b style="color:var(--txt)">1. 永远背对太阳。</b>在 L2，太阳和地球永远在同一侧，望远镜不用转来转去，挡光变得很简单。</p>
+    <p style="color:var(--dim);font-size:14.5px;margin-top:6px"><b style="color:var(--txt)">2. 又远又冷。</b>红外望远镜最怕热。L2 离地球 150 万公里（约 4 倍地月距离），远离地球的热辐射，才能看清微弱的热信号。</p>
+    <p style="color:var(--dim);font-size:14.5px;margin-top:6px"><b style="color:var(--txt)">3. 省燃料。</b>在 L2，太阳和地球的引力合起来，恰好等于「跟着地球绕太阳转」所需要的向心力，望远镜几乎可以悬停，只需偶尔微调轨道。</p>
+    <p style="color:var(--dim);font-size:14.5px;margin-top:8px">罗曼和韦伯「合租」L2，但各自走不同的环绕轨道（halo 轨道），互不打扰。哈勃则留在近地轨道 540 公里，一半时间被地球挡住，这就是它看天「慢」的原因之一。</p>
+  </div>
+</section>
+
+<!-- 时间线 -->
+<section id="timeline">
+  
+  <h2>时间线：一部望远镜家族史</h2>
+  <div class="tl">
+    <div class="tl-item"><span class="y">1990</span><b>哈勃升空</b><p>人类第一台太空大望远镜，开启太空天文时代。</p></div>
+    <div class="tl-item"><span class="y">2016</span><b>间谍望远镜捐赠</b><p>NRO 捐出两台 2.4 米望远镜，罗曼计划获得关键转机。</p></div>
+    <div class="tl-item"><span class="y">2020</span><b>命名「罗曼」</b><p>NASA 以「哈勃之母」南希·罗曼命名，批准建造。</p></div>
+    <div class="tl-item"><span class="y">2021</span><b>韦伯升空</b><p>三兄弟里的二哥入住 L2，开始看宇宙最深处的光。</p></div>
+    <div class="tl-item"><span class="y">2026.8.30</span><b>罗曼升空</b><p>猎鹰重型火箭从肯尼迪航天中心起飞，发射圆满成功。</p></div>
+    <div class="tl-item"><span class="y">2027 初</span><b>首批图像</b><p>经过约 3 个月部署校准，NASA 预计 2027 年初发布首批科学图像。</p></div>
+    <div class="tl-item"><span class="y">2031+</span><b>延长任务</b><p>主任务 5 年，设计支持再延长 5 年，还可加注燃料。</p></div>
+  </div>
+</section>
+
+<!-- 火箭课堂 -->
+<section id="rocket">
+  
+  <h2>火箭课堂：怎么上天，怎么回家</h2>
+  <p class="lead">2026 年 8 月 30 日，猎鹰重型把罗曼送上了天。火箭不是「往上飞」，是横着加速到每秒 7.8 公里，像甩链球，速度够了就掉不下来。飞完还要想办法「回家」。</p>
+
+  <div class="act"><em>ACT I</em> 上天 · 三个必懂概念</div>
+  <div class="rc-grid">
+    <div class="rc-card">
+      <span class="num">CONCEPT 01</span>
+      <span class="big">28,000 <em>KM/H · 约 7.8 KM/S</em></span>
+      <h3>轨道速度：绕地不掉下来的最低配速</h3>
+      <p>卫星不掉下来，靠的不是「飞得高」，是「横着跑得快」。速度够了，地球引力刚好把它拉成圆圈。罗曼要更快一点，然后一路漂向 150 万公里外的 L2，11 里那约 3 个月巡航就是这么来的。</p>
+    </div>
+    <div class="rc-card">
+      <span class="num">CONCEPT 02</span>
+      <span class="big">90% <em>的重量是燃料</em></span>
+      <h3>火箭分级：为什么要一节一节扔</h3>
+      <p>空罐子也是要扛的重量。所以飞一程、扔一截：助推器用完就分离，芯级用完就分离。每扔一次，剩下的火箭就更轻、更快。直觉版：背空书包跑步，比背着满书包快。</p>
+    </div>
+    <div class="rc-card">
+      <span class="num">CONCEPT 03</span>
+      <span class="big">MAX-Q <em>最吃劲的一刻</em></span>
+      <h3>最大动压：速度 × 气压的峰值</h3>
+      <p>升空后约 1 分钟，速度越来越快、空气还稠密，两者相乘压到最大，这是全程结构受力最狠的瞬间（11 里 19:27 那一行）。过了 Max-Q，越高空气越稀，越飞越轻松。</p>
+    </div>
+  </div>
+
+  <div class="fh-card">
+    <h3>送罗曼的火箭：猎鹰重型<span>FALCON HEAVY</span></h3>
+    <div class="fh-stats"><i>27 台 <b>Merlin</b></i><i>起飞推力 <b>≈2300 吨</b></i><i>高 <b>70 米</b></i><i>LEO 运力 <b>63.8 吨</b>（不回收时）</i></div>
+    <p>名字很直白：三枚猎鹰 9 绑在一起，中间那枚叫芯级。27 台 Merlin 发动机（每枚芯级 9 台）同时点火，产生约 2300 吨推力，把 70 米高的火箭和罗曼一起推离地面。它是 SpaceX 目前运力最强的火箭。</p>
+  </div>
+
+  <div class="act"><em>ACT II</em> 回家 · 火箭怎么回收</div>
+  <div class="rc-grid">
+    <div class="rc-card">
+      <span class="num">KEY 01</span>
+      <span class="big">反推 <em>减速</em></span>
+      <h3>留燃料「刹车」</h3>
+      <p>分离时故意不把燃料烧光，留一部分，用 3 台发动机反推减速，抵消落回地球的速度。</p>
+    </div>
+    <div class="rc-card">
+      <span class="num">KEY 02</span>
+      <span class="big">栅格翼 <em>控姿态</em></span>
+      <h3>像飞镖尾翼</h3>
+      <p>格栅翼展开后像飞镖的尾翼，在空中调整姿态，让火箭精准瞄准着陆区。</p>
+    </div>
+    <div class="rc-card">
+      <span class="num">KEY 03</span>
+      <span class="big">着陆腿 <em>缓冲</em></span>
+      <h3>稳稳站住</h3>
+      <p>快落地时展开四条着陆腿，缓冲最后一击。落地那一瞬，发动机还会补一把小推力。</p>
+    </div>
+    <div class="rc-card">
+      <span class="num">KEY 04</span>
+      <span class="big">同步 <em>落回</em></span>
+      <h3>两枚一起回家</h3>
+      <p>猎鹰重型的招牌画面：两枚侧助推器几乎同时落回陆地，一左一右，间隔不过几秒。</p>
+    </div>
+  </div>
+
+  <div class="rc-rec">
+    <img src="img/envoy_recovery.jpg" alt="猎鹰重型两枚侧助推器同步反推降落">
+    <div class="rc-body">
+      <h3>这次真的回收了<span>2026-08-30</span></h3>
+      <span class="tag">BOOSTER RECOVERY ✓</span>
+      <p>罗曼发射当天：T+2分24秒，两枚侧助推器关机分离，调头飞回；T+7分40秒，稳稳落回卡纳维拉尔角着陆区（LZ-2），11 里那枚「BOOSTER RECOVERY」对勾，就是这么来的。反推制动、栅格翼瞄准、几乎同步落地，全套动作一气呵成。</p>
+      <p>有意思的是：这次只有两枚侧助推器「回家」。中间的芯级没有回收，被直接丢弃；整流罩（包着罗曼的外壳）也在半空分离。</p>
+      <p class="note">为什么值得回收？SpaceX 官网报价：复用版约 9700 万美元一次，一次性版 1.5 亿美元，省下约三分之一。翻新检查后，助推器还能再飞。</p>
+    </div>
+  </div>
+
+  <div class="rc-map">
+    <div class="cap">60 分钟 × 原理 // 11 里的时间线，翻译成物理课</div>
+    <table>
+      <tr><th>时刻</th><th>发生了什么（见 11）</th><th>原理翻译</th></tr>
+      <tr><td>19:19</td><td>引擎预冷</td><td>点火前的「热身」：液氧煤油先降温，保证点火瞬间稳定燃烧。</td></tr>
+      <tr><td>19:26</td><td>升空</td><td>化学能释放：27 台 Merlin 同时点火，约 2300 吨推力托起整枚火箭。</td></tr>
+      <tr><td>19:27</td><td>通过最大动压</td><td>速度 × 气压的峰值，结构受力最狠的一刻（Max-Q）。</td></tr>
+      <tr><td>19:28</td><td>侧助推器分离</td><td>减重 + 准备回家：燃料快用完的助推器脱离，调头飞回。</td></tr>
+      <tr><td>19:30</td><td>上面级接管</td><td>接力：芯级交棒给第二级，继续推着罗曼加速。</td></tr>
+      <tr><td>19:34</td><td>助推器着陆</td><td>回家：反推减速 + 栅格翼瞄准 + 着陆腿缓冲，落在 LZ-2。</td></tr>
+      <tr><td>19:57</td><td>与火箭分离</td><td>交棒完成：罗曼展开太阳能板，开始约 3 个月巡航。</td></tr>
+    </table>
+  </div>
+
+  <div class="act"><em>BLUEPRINT</em> 图纸 · 把两幕串成一张</div>
+  <p class="lead" style="margin-top:10px">上面两幕，画成图纸就一句话：<b>发射是链式</b>（一节推一节，最后甩进轨道），<b>回收是回路</b>（飞出去，再飞回来，翻新再飞）。数字全部来自 11 的时间线。</p>
+  <div class="arch-grid">
+    <div class="arch">
+      <div class="a-cap"><i></i>LAUNCH // 发射架构</div>
+      <div class="a-sub">链式：能量从燃料一路传到轨道，每传一级扔一个空罐子</div>
+      <div class="arch-node"><span class="n">01</span><div class="bd"><span class="t">推进剂</span><span class="s">液氧 + 煤油，点火前先预冷</span></div><span class="tm">19:19 预冷</span></div>
+      <div class="arch-arrow">▼</div>
+      <div class="arch-node"><span class="n">02</span><div class="bd"><span class="t">引擎燃烧 ×27</span><span class="s">化学能释放成推力</span></div><span class="tm">19:26 点火</span></div>
+      <div class="arch-arrow">▼</div>
+      <div class="arch-node"><span class="n">03</span><div class="bd"><span class="t">推力 22.82 MN</span><span class="s">≈2300 吨，托起 70 米高的火箭</span></div><span class="tm"></span></div>
+      <div class="arch-arrow">▼</div>
+      <div class="arch-node"><span class="n">04</span><div class="bd"><span class="t">突破 Max-Q</span><span class="s">速度 × 气压的峰值，结构最吃劲</span></div><span class="tm">19:27 约 1 分</span></div>
+      <div class="arch-arrow">▼</div>
+      <div class="arch-node"><span class="n">05</span><div class="bd"><span class="t">分级抛弃</span><span class="s">燃料占全箭约 90%，用完的空罐子扔掉减重</span></div><span class="tm">19:28 分离</span></div>
+      <div class="arch-arrow">▼</div>
+      <div class="arch-node"><span class="n">06</span><div class="bd"><span class="t">入轨</span><span class="s">28,000 km/h，横着飞，掉不下来</span></div><span class="tm">19:57 罗曼分离</span></div>
+    </div>
+    <div class="arch">
+      <div class="a-cap"><i></i>RECOVERY // 回收架构</div>
+      <div class="a-sub">回路：分离后调头，减速再入，精准落回，翻新再飞</div>
+      <div class="arch-node"><span class="n">01</span><div class="bd"><span class="t">侧推分离</span><span class="s">燃料故意留一部分，关机调头飞回</span></div><span class="tm">19:28 分离</span></div>
+      <div class="arch-arrow">▼</div>
+      <div class="arch-node"><span class="n">02</span><div class="bd"><span class="t">反推制动</span><span class="s">boostback 点火减速，抵消下落速度</span></div><span class="tm"></span></div>
+      <div class="arch-arrow">▼</div>
+      <div class="arch-node"><span class="n">03</span><div class="bd"><span class="t">再入大气</span><span class="s">栅格翼像飞镖尾翼控姿态，热防护扛高温</span></div><span class="tm"></span></div>
+      <div class="arch-arrow">▼</div>
+      <div class="arch-node"><span class="n">04</span><div class="bd"><span class="t">着陆腿展开</span><span class="s">四条腿缓冲最后一击，落地补一把小推力</span></div><span class="tm"></span></div>
+      <div class="arch-arrow">▼</div>
+      <div class="arch-node"><span class="n">05</span><div class="bd"><span class="t">触地着陆</span><span class="s">LZ-2 着陆区，两枚几乎同步落地</span></div><span class="tm">19:34 着陆</span></div>
+      <div class="arch-loop">↺ 整箭复用：翻新检查后还能再飞，省约三分之一成本</div>
+      <span class="arch-tag">✓ 2026-08-30 实况：双助推同步落回卡角</span>
+    </div>
+  </div>
+</section>
+
+<!-- 星际使者 -->
+<section id="envoys">
+  
+  <h2>星际使者：NASA 的探险舰队</h2>
+  <p class="lead">罗曼不是 NASA 第一次往深空派「使者」。从月球到太阳系边缘，这些航天器替人类走了最远的路，有的还在飞，有的已经谢幕。</p>
+
+  <div class="ruler">
+    <div class="cap">WHERE ARE THEY NOW // 距太阳多远 <em>对数刻度 · 截至 2026-08</em></div>
+    <div class="track" id="rulerTrack"><div class="line"></div></div>
+    <div class="ticks"><i>地球</i><i>木星</i><i>冥王星</i><i>星际空间</i></div>
+  </div>
+  <div class="env-info" id="envInfo"><p class="hint">● 点击轨道上的光点，看每个使者现在在哪</p></div>
+
+  <div class="env-grid">
+    <div class="env-card">
+      <img src="img/envoy_voyager1.jpg" alt="旅行者 1 号航天器模型">
+      <div class="body">
+        <h3>旅行者 1 号<span>VOYAGER 1</span></h3>
+        <div class="stat"><i>1977 发射</i><i class="hot">171 AU</i><i>2012 星际空间</i></div>
+        <p>飞得最远的人造物。1977 年出发，先看了木星和土星，2012 年成为第一艘进入星际空间的航天器。身上带着「金唱片」，录满地球的声音和照片。万一被外星文明捡到，就知道地球长什么样。</p>
+        <span class="flag">STATUS // 距地球约 256 亿公里 · 仍在飞行</span>
+      </div>
+    </div>
+    <div class="env-card">
+      <img src="img/envoy_neptune.jpg" alt="海王星，旅行者 2 号拍摄">
+      <div class="body">
+        <h3>旅行者 2 号<span>VOYAGER 2</span></h3>
+        <div class="stat"><i>1977 发射</i><i class="hot">143 AU</i><i>2018 星际空间</i></div>
+        <p>旅行者 1 号的孪生兄弟，多绕了一段路，成为唯一造访过天王星和海王星的探测器。海王星那张蓝色大特写就是它拍的。2018 年，它也进入了星际空间。</p>
+        <span class="flag">STATUS // 距地球约 214 亿公里 · 仍在飞行</span>
+      </div>
+    </div>
+    <div class="env-card">
+      <img src="img/envoy_pluto.jpg" alt="冥王星，新视野号 2015 年拍摄">
+      <div class="body">
+        <h3>新视野号<span>NEW HORIZONS</span></h3>
+        <div class="stat"><i>2006 发射</i><i>2015 冥王星</i><i>2019 阿罗科斯</i></div>
+        <p>2015 年它飞过冥王星，让这颗孤独的矮行星第一次有了特写。4 年后又飞掠柯伊伯带天体阿罗科斯，那是人类探测过的最远天体。现在它还在柯伊伯带里赶路。</p>
+        <span class="flag">STATUS // 距地球约 99 亿公里（≈66 AU）· 仍在飞行</span>
+      </div>
+    </div>
+    <div class="env-card">
+      <img src="img/envoy_saturn.jpg" alt="土星，卡西尼号拍摄">
+      <div class="body">
+        <h3>卡西尼-惠更斯<span>CASSINI</span></h3>
+        <div class="stat"><i>1997 发射</i><i>2004 入轨土星</i><i>2017 壮丽终局</i></div>
+        <p>在土星身边绕了 13 年的老侦探。它带着「惠更斯」着陆器，2005 年把人类第一次送上外星卫星土卫六泰坦。燃料耗尽后，2017 年它主动坠入土星大气，绝不给土星的卫星留下污染。</p>
+        <span class="flag">GRAND FINALE // 2017-09-15</span>
+      </div>
+    </div>
+    <div class="env-card">
+      <img src="img/envoy_jupiter.jpg" alt="木星大红斑，朱诺号拍摄">
+      <div class="body">
+        <h3>朱诺号<span>JUNO</span></h3>
+        <div class="stat"><i>2011 发射</i><i>2016 入轨木星</i><i class="hot">运行中</i></div>
+        <p>正在木星身边工作的「气象卫星」。它是第一艘在木星用太阳能板供电的探测器，钻到云层底下，看这颗巨行星内部到底是什么结构。</p>
+        <span class="flag">STATUS // 环绕木星 · 运行中</span>
+      </div>
+    </div>
+    <div class="env-card">
+      <img src="img/envoy_parker.jpg" alt="帕克太阳探测器">
+      <div class="body">
+        <h3>帕克太阳探测器<span>PARKER</span></h3>
+        <div class="stat"><i>2018 发射</i><i class="hot">距日面 610 万公里</i><i>时速约 69 万公里</i></div>
+        <p>人类派去「摸太阳」的勇士。它顶着上千度高温一次次掠过日冕，2024 年 12 月创下纪录：距太阳表面只有 610 万公里，比水星还近。隔热盾是 11.4 厘米厚的碳复合材料。</p>
+        <span class="flag">RECORD // 2024-12-24 · 最近纪录</span>
+      </div>
+    </div>
+    <div class="env-card">
+      <img src="img/envoy_pioneer.jpg" alt="先驱者铭牌">
+      <div class="body">
+        <h3>先驱者 10 号<span>PIONEER 10</span></h3>
+        <div class="stat"><i>1972 发射</i><i>第一个穿越小行星带</i><i>2003 最后信号</i></div>
+        <p>NASA 派往外行星的第一位使者，第一个闯过小行星带，第一个近距离看木星。身上带着「先驱者铭牌」，画着一男一女和太阳系的位置，是给外星人的自我介绍。2003 年发回最后一道信号后失联，至今仍在漂流。</p>
+        <span class="flag">LAST SIGNAL // 2003-01-23 · 已失联</span>
+      </div>
+    </div>
+    <div class="env-card">
+      <img src="img/envoy_apollo.jpg" alt="奥尔德林在月球表面">
+      <div class="body">
+        <h3>阿波罗 11 号<span>APOLLO 11</span></h3>
+        <div class="stat"><i>1969-07-20 登月</i><i>阿姆斯特朗 · 奥尔德林</i><i class="hot">已返回</i></div>
+        <p>彩蛋：人类的第一次。1969 年 7 月 20 日，阿姆斯特朗和奥尔德林踏上月球，说出「这是我个人的一小步，却是人类的一大步」。8 天后，三人带着 21 公斤月岩回到地球，所有深空探索从这里出发。</p>
+        <span class="flag">FIRST // 人类首次登月 · 1969</span>
+      </div>
+    </div>
+  </div>
+
+  <figure class="pale">
+    <img src="img/envoy_paledot.jpg" alt="暗淡蓝点">
+    <figcaption>
+      <b>暗淡蓝点 · 旅行者 1 号拍摄</b>
+      <span>「再看看那个光点。就在那里，那是家园，那是我们。」（卡尔·萨根《暗淡蓝点》）</span>
+      <em>PALE BLUE DOT // VOYAGER 1 · 1990-02-14 · 距地球约 60 亿公里回望</em>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- 经典照片 -->
+<section id="classic">
+  
+  <h2>经典照片：哥哥们拍过的宇宙</h2>
+  <p class="lead">罗曼要 2027 年初才会发回第一批照片。先看看两位哥哥哈勃和韦伯已经拍下的经典：这些照片里的宇宙，也正是罗曼将来要扫描的疆域。</p>
+  <div class="classic-grid">
+    <figure class="classic-card">
+      <img src="img/classic_pillars.jpg" alt="创生之柱">
+      <figcaption><b>创生之柱 · 鹰状星云</b>哈勃 2014 年重拍 · 恒星正在诞生<span>HUBBLE // M16</span></figcaption>
+    </figure>
+    <figure class="classic-card">
+      <img src="img/classic_hudf.jpg" alt="哈勃极深场">
+      <figcaption><b>哈勃极深场</b>一小块天区里挤着上万个星系 · 每一粒光点都是一个星系<span>HUBBLE // HUDF</span></figcaption>
+    </figure>
+    <figure class="classic-card">
+      <img src="img/classic_crab.jpg" alt="蟹状星云">
+      <figcaption><b>蟹状星云</b>一颗恒星爆炸后的残骸 · 1054 年古人就见过它<span>HUBBLE // CRAB</span></figcaption>
+    </figure>
+    <figure class="classic-card">
+      <img src="img/classic_orion.jpg" alt="猎户座大星云">
+      <figcaption><b>猎户座大星云</b>离地球最近的大型恒星育婴房 · 肉眼可见的星云<span>HUBBLE // ORION</span></figcaption>
+    </figure>
+    <figure class="classic-card">
+      <img src="img/classic_webb_deep.jpg" alt="韦伯首张深场">
+      <figcaption><b>韦伯首张深场</b>把 130 亿年前的星光收入一张照片<span>JWST // SMACS 0723</span></figcaption>
+    </figure>
+    <figure class="classic-card">
+      <img src="img/classic_carina.jpg" alt="宇宙悬崖">
+      <figcaption><b>宇宙悬崖 · 船底座星云</b>韦伯红外眼看到的恒星育婴房<span>JWST // CARINA</span></figcaption>
+    </figure>
+    <figure class="classic-card">
+      <img src="img/classic_southern.jpg" alt="南环星云">
+      <figcaption><b>南环星云</b>一颗恒星临终吹出的气泡 · 韦伯首批彩照之一<span>JWST // SOUTHERN RING</span></figcaption>
+    </figure>
+  </div>
+  <div class="cause"><b>为什么放这些：</b>罗曼的任务不是拍几张「美照」，而是<b>用同样锐利的眼睛把整片天空扫一遍</b>。上面这些区域，未来都会出现在罗曼的全景地图里，而且一次能装下 100 个哈勃的视野。</div>
+</section>
+
+<!-- 发射实况 -->
+<section id="launch">
+  <div class="kicker">// LAUNCH</div>
+  
+  <h2>发射实况：今天刚发生</h2>
+  <p class="lead">这不是历史，是新闻。就在 2026 年 8 月 30 日，罗曼刚刚离开地球。</p>
+  <div class="chips">
+    <span class="chip ok"><b>✓</b> LIFTOFF</span>
+    <span class="chip ok"><b>✓</b> ORBIT</span>
+    <span class="chip ok"><b>✓</b> BOOSTER RECOVERY</span>
+    <span class="chip ok"><b>✓</b> DEPLOY</span>
+    <span class="chip run"><b>◷</b> CRUISING TO L2</span>
+    <span class="chip">2027 FIRST LIGHT</span>
+  </div>
+  <div class="launch-grid">
+    <div class="card">
+      <p style="font-size:14.5px"><b>2026-08-30 19:26 北京时间</b>，猎鹰重型火箭从肯尼迪航天中心 LC-39A 发射台点火，31 分钟后罗曼与火箭分离，展开太阳能板，开始调试。两枚侧助推器稳稳落回陆地，SpaceX 的招牌动作又成功一次。</p>
+      <p style="font-size:14.5px;color:var(--dim);margin-top:8px">接下来约 3 个月，罗曼将完成部署、校准、测试，抵达最终轨道，预计 2027 年初发布第一批科学图像。到那时，宇宙侦察兵的第一份全景地图就会公开。</p>
+    </div>
+    <figure class="imgcard">
+      <img src="img/falcon.jpg" alt="猎鹰重型火箭发射">
+      <figcaption>FALCON HEAVY // LIFTOFF · NASA</figcaption>
+    </figure>
+  </div>
+  <h3 style="margin-top:34px;font-size:19px">发射 60 分钟：分阶段看</h3>
+  <div class="ls-phase">阶段一 · 点火升空</div>
+  <div class="ls-row"><div class="ls-time">19:19</div><div class="ls-body"><b>引擎预冷</b><p>发射前 7 分钟，火箭引擎开始降温准备点火。</p></div></div>
+  <div class="ls-row"><div class="ls-time">19:23</div><div class="ls-body"><b>「GO」发射指令</b><p>任务团队完成最终检查，NASA 发射经理给出 GO，倒计时进入最后阶段。</p></div></div>
+  <div class="ls-row"><div class="ls-time">19:26</div><div class="ls-body"><b>升空！</b><p>27 台引擎同时点火，猎鹰重型带着罗曼离开地面。</p></div></div>
+  <div class="ls-row"><div class="ls-time">19:27</div><div class="ls-body"><b>通过最大动压</b><p>火箭速度与空气压力叠加到最大动压的时刻，考验结构强度。</p></div></div>
+  <div class="ls-phase">阶段二 · 火箭分离回收</div>
+  <div class="ls-row"><div class="ls-time">19:28</div><div class="ls-body"><b>侧助推器分离返回</b><p>两枚侧助推器关机分离（T+2分24秒），调头飞回陆地，约 T+7分40秒 着陆。</p></div></div>
+  <div class="ls-row"><div class="ls-time">19:30</div><div class="ls-body"><b>上面级接管</b><p>中心级关机分离，上面级点火接管（约 T+4 分钟），继续推着罗曼加速。</p></div></div>
+  <div class="ls-row"><div class="ls-time">19:33</div><div class="ls-body"><b>建立通信</b><p>罗曼通过中继卫星和地面控制中心通上话，报告自己一切正常。</p></div></div>
+  <div class="ls-row"><div class="ls-time">19:34</div><div class="ls-body"><b>侧助推器着陆</b><p>两枚侧助推器稳稳落回卡纳维拉尔角着陆区（LZ-2，T+7分40秒）。</p></div></div>
+  <div class="ls-row"><div class="ls-time">19:50</div><div class="ls-body"><b>上面级二次点火</b><p>绕地球半圈后再次点火（SES-2），把罗曼推向深空轨道。</p></div></div>
+  <div class="ls-row"><div class="ls-time">19:52</div><div class="ls-body"><b>二次点火完成</b><p>速度达标，罗曼获得飞向 L2 的全部速度（SECO-2，T+26分31秒）。</p></div></div>
+  <div class="ls-phase">阶段三 · 望远镜上岗</div>
+  <div class="ls-row"><div class="ls-time">19:57</div><div class="ls-body"><b>与火箭分离</b><p>罗曼脱离上面级，从此独立飞行（T+31 分 31 秒，NASA 官方确认）。</p></div></div>
+  <div class="ls-row"><div class="ls-time">19:58</div><div class="ls-body"><b>独立飞行确认</b><p>NASA 宣布罗曼已在轨运行，接下来 30 分钟内太阳能板展开，开始自己供电、降温。</p></div></div>
+  <div class="ls-row"><div class="ls-time">≈20:26</div><div class="ls-body"><b>发射报道结束</b><p>按计划，NASA 直播持续到发射后约 1 小时，随后宣布发射圆满成功，罗曼正式开启约 3 个月的巡航之旅。</p></div></div>
+  <div class="cause" style="margin-top:16px"><b>小知识：</b>整个发射从点火到入轨只用了约半小时，但接下来<b>约 3 个月</b>的校准才是关键：镜片、仪器、防热罩都要在太空中慢慢调好，才能拍出清晰的照片。</div>
+  <div class="cause"><b>所以：</b>你正在见证一台新旗舰望远镜的诞生。它现在就在天上，以每小时几万公里的速度飞向 L2。晚上抬头看星星的时候，可以想一下：有一台 3 亿像素的相机，正在替我们数星星。</div>
+</section>
+
+<footer>
+  <p>数据来源：NASA 官方网站（Roman Space Telescope mission · 9 Things to Know · 发射直播博客）等，2026-08-31 二次核验 · 图片来自 NASA（公有领域）· 科学家肖像来自 NASA / Wikimedia Commons · 拉格朗日点示意图：NSF NOIRLab（CC BY 4.0）· 航天器影像 NASA / Wikimedia Commons · 火箭回收影像：NASA Kim Shiflett（公有领域）</p>
+  <p class="motto">Per Aspera Ad Astra</p>
+</footer>
+</div>
+
+<script>
+/* 星空 */
+(function(){
+  var c=document.getElementById('stars'),n=120,html='';
+  for(var i=0;i<n;i++){
+    var s=Math.random()*1.8+.4,d=Math.random()*4+2;
+    html+='<i style="left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;width:'+s+'px;height:'+s+'px;animation-delay:'+(Math.random()*3)+'s;animation-duration:'+(d)+'s"></i>';
+  }
+  c.innerHTML=html;
+})();
+/* 三兄弟切换 */
+(function(){
+  var tabs=document.querySelectorAll('#broTabs .tab'),panels=document.querySelectorAll('.bro-panel');
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      var b=t.getAttribute('data-b');
+      tabs.forEach(function(x){x.classList.remove('on')});
+      panels.forEach(function(p){p.classList.remove('on')});
+      t.classList.add('on');
+      document.querySelector('.bro-panel[data-b="'+b+'"]').classList.add('on');
+    });
+  });
+})();
+/* v4.3 100倍视场拖拽揭示 */
+(function(){
+  var r=document.getElementById('cmpRange'),veil=document.getElementById('veil'),lbl=document.getElementById('cmpLbl');
+  if(!r||!veil)return;
+  function upd(){
+    var v=+r.value;
+    var W=100,H=56,hw=10,hh=10;
+    var w=hw+(W-hw)*v/100,h=hh+(H-hh)*v/100;
+    var l=(W-w)/2,t=(H-h)/2;
+    veil.style.clipPath='inset('+t+'% '+(100-w-l)+'% '+(100-h-t)+'% '+l+'%)';
+    lbl.innerHTML='哈勃 × <b>'+v+'</b>';
+  }
+  r.addEventListener('input',upd);
+  upd();
+})();
+/* 滚动显现 */
+(function(){
+  var els=document.querySelectorAll('section');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+    },{threshold:.08});
+    els.forEach(function(e){io.observe(e)});
+  }else{
+    els.forEach(function(e){e.classList.add('in')});
+  }
+})();
+/* 巡航进度动画 */
+setTimeout(function(){document.getElementById('cruiseFill').style.width='62.5%'},600);
+/* 星际使者里程尺 */
+(function(){
+  var probes=[
+    {id:'apollo',n:'阿波罗',au:0.0026,note:'月球 · 1969 已往返',dot:'apollo',lbl:'flr',t:'阿波罗 11 号',tag:'彩蛋 · 人类第一次登月',d:'1969 年 7 月 20 日，人类第一次踏上另一颗星球，8 天后平安返回地球。所有深空探索从这里出发。'},
+    {id:'parker',n:'帕克',au:0.045,note:'距日面最近 610 万公里',dot:'',lbl:'',t:'帕克太阳探测器',tag:'距日面最近纪录',d:'2024 年 12 月掠过距太阳表面仅 610 万公里的位置，比水星还靠近太阳，创下人类探测器的最近纪录。'},
+    {id:'juno',n:'朱诺',au:5.2,note:'木星轨道 · 运行中',dot:'',lbl:'',t:'朱诺号',tag:'环绕木星',d:'2016 年至今环绕木星，第一艘在木星用太阳能板工作的探测器，正在揭开巨行星的内部结构。'},
+    {id:'cassini',n:'卡西尼',au:9.5,note:'土星 · 终局 2017',dot:'end',lbl:'end',t:'卡西尼-惠更斯',tag:'已终结',d:'绕土星 13 年，2005 年把「惠更斯」送上土卫六泰坦。2017 年燃料耗尽，主动坠入土星大气，壮丽谢幕。'},
+    {id:'nh',n:'新视野',au:65.7,note:'柯伊伯带 ≈66 AU',dot:'',lbl:'',t:'新视野号',tag:'冥王星 · 柯伊伯带',d:'2015 年飞掠冥王星，2019 年飞掠阿罗科斯，人类探测过的最远天体。现在仍在柯伊伯带里赶路。'},
+    {id:'v2',n:'旅行者 2',au:143,note:'星际空间 143 AU',dot:'',lbl:'fl',t:'旅行者 2 号',tag:'星际空间',d:'唯一到访天王星和海王星的探测器，2018 年进入星际空间，是第二艘飞出日球层顶的航天器。'},
+    {id:'v1',n:'旅行者 1',au:171.2,note:'星际空间 171 AU',dot:'',lbl:'up fl',t:'旅行者 1 号',tag:'最远 · 星际空间',d:'飞得最远的人造物，带着金唱片，2012 年成为第一艘进入星际空间的航天器。'}
+  ];
+  var Lmin=Math.log10(0.01),Lmax=Math.log10(200),track=document.getElementById('rulerTrack');
+  function pos(au){return Math.min(99.5,Math.max(1,(Math.log10(au)-Lmin)/(Lmax-Lmin)*100))}
+  probes.forEach(function(p,i){
+    var el=document.createElement('div');
+    el.className='dot'+(p.dot?' '+p.dot:'');
+    el.style.left=pos(p.au)+'%';
+    el.title=p.n+' · '+p.note;
+    el.setAttribute('data-i',i);
+    track.appendChild(el);
+    var lb=document.createElement('div');
+    lb.className='lbl'+(p.lbl?' '+p.lbl:'')+(p.dot==='apollo'?' apollo':'')+(p.dot==='end'?' end':'');
+    lb.style.left=pos(p.au)+'%';
+    lb.innerHTML='<b>'+p.n+'</b>';
+    track.appendChild(lb);
+  });
+  var info=document.getElementById('envInfo');
+  track.addEventListener('click',function(e){
+    var d=e.target.closest('.dot');if(!d)return;
+    var p=probes[+d.getAttribute('data-i')];
+    info.innerHTML='<h4>'+p.t+' <b>//</b> '+p.tag+'</h4><p>'+p.d+'</p><p class="hint" style="margin-top:8px">'+p.note+'</p>';
+  });
+})();
+/* v4.0 导航目录 */
+(function(){
+  var tog=document.getElementById('navToggle'),panel=document.getElementById('tocPanel');
+  if(!tog||!panel)return;
+  tog.addEventListener('click',function(){panel.classList.toggle('open');tog.classList.toggle('on')});
+  panel.addEventListener('click',function(e){if(e.target.closest('a')){panel.classList.remove('open');tog.classList.remove('on')}});
+  var map={};document.querySelectorAll('.toc a,.toc-panel a').forEach(function(a){var h=a.getAttribute('href');if(h&&h.charAt(0)==='#')map[h.slice(1)]=a});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(en.isIntersecting){
+        var id=en.target.id;
+        Object.keys(map).forEach(function(k){map[k].classList.toggle('on',k===id)});
+      }
+    });
+  },{rootMargin:'-25% 0px -65% 0px'});
+  document.querySelectorAll('section[id]').forEach(function(s){io.observe(s)});
+})();
+</script>
+</body>
+</html>
